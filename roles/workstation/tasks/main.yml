@@ -24,7 +24,7 @@
 
 - name: Install Ubuntu Dependencies 
   apt:
-    name: "{{ fedora_deps }}"
+    name: "{{ ubuntu_deps }}"
     state: present
   become: yes
   tags: ubuntu
