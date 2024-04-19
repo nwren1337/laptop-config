@@ -1,0 +1,11 @@
+# Creation Date: 4/19/2024
+#
+# Author: Nathan Wren
+---
+
+# file : main.yml
+
+- hosts: all
+  gather_facts: True
+  roles:
+    - workstation

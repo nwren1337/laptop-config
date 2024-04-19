@@ -1,0 +1,12 @@
+---
+# vars
+#
+
+fedora_deps :
+  - '@Development Tools'
+
+ubuntu_deps :
+  - curl
+
+dev_deps :
+  - curl

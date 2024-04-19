@@ -1,0 +1,36 @@
+---
+## workstation role entry point
+#
+
+- name: Update DNF Packages
+  dnf:
+    name: "*"
+    state: latest
+  become: yes
+  tags: fedora
+
+- name: Install Fedora Dependencies 
+  dnf:
+    name: "{{ fedora_deps }}"
+  become: yes
+  tags: fedora
+
+- name: Update APT Packages
+  apt:
+    name: "*"
+    state: latest
+  become: yes
+  tags: ubuntu
+
+- name: Install Ubuntu Dependencies 
+  apt:
+    name: "{{ fedora_deps }}"
+    state: present
+  become: yes
+  tags: ubuntu
+
+- name: Install Dev Packages
+  ansible.builtin.package:
+    name : "{{ dev_deps }}"
+  become: yes
+  tags: fedora, ubuntu
