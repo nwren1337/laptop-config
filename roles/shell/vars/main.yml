@@ -1,2 +1,13 @@
 ---
 # vars file for shell
+bashrc: "{{ ansible_env.HOME }}/.bashrc"
+bash_profile: "{{ ansible_env.HOME }}/.bash_profile"
+
+configs:
+  - name: bashrc
+    path: "{{ bashrc }}"
+  - name: bash_profile
+    path: "{{ bash_profile }}"
+
+install_packages:
+  - neofetch

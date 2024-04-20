@@ -1,2 +1,21 @@
 ---
 # tasks file for shell
+- name: Install required packages
+  ansible.builtin.package:
+    name: "{{ install_packages }}"
+    state: present
+  become: yes
+  tags:
+    - install_packages
+
+- name: Ensure shell configs in place
+  copy:
+    src: "{{ item.name }}"
+    dest: "{{ item.path }}"
+    backup: yes
+    mode: 0640
+  loop: "{{ configs }}"
+
+
+
+
