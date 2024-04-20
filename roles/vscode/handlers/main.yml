@@ -1,2 +1,7 @@
 ---
 # handlers file for vscode
+- name: DNF update
+  ansible.builtin.dnf:
+    name: "*"
+    state: latest
+  become: yes

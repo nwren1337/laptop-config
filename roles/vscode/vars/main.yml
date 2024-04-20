@@ -1,2 +1,4 @@
 ---
 # vars file for vscode
+yum_repos: "/etc/yum.repos.d/"
+vscode_repo: "vscode.repo"

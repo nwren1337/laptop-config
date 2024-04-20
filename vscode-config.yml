@@ -1,0 +1,10 @@
+---
+- name: Install VSCode
+  hosts: localhost
+  gather_facts: yes
+  become: no
+
+  tasks:
+    - name: install VSCode
+      import_role:
+        name: vscode
