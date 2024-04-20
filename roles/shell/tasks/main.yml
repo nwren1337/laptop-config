@@ -8,17 +8,14 @@
   tags:
     - install_packages
 
-- name: Ensure .bashrc in place
+- name: Ensure shell configs in place
   copy:
-    src: bashrc
-    dest: "{{ bashrc }}"
+    src: "{{ item.name }}"
+    dest: "{{ item.path }}"
     backup: yes
     mode: 0640
+  loop: "{{ configs }}"
 
-- name: Ensure .bash_profile in place
-  copy:
-    src: bash_profile
-    dest: "{{ bash_profile }}"
-    backup: yes
-    mode: 0640
+
+
 
