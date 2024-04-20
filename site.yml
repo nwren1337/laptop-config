@@ -5,7 +5,20 @@
 
 # file : main.yml
 
-- hosts: all
-  gather_facts: True
-  roles:
-    - workstation
+- hosts: localhost
+  gather_facts: yes
+  become: no
+
+  tasks:
+    - name: Configure shell
+      import_role:
+        name: shell
+    - name: Configure Vim
+      import_role:
+        name: vim
+    - name: Configure VSCode
+      import_role:
+        name: vscode
+    - name: Configure Containerization tools
+      import_role:
+        name: container_tools
