@@ -1,0 +1,18 @@
+---
+# task to install skaffold
+- name: Check install location
+  shell: "ls {{ install_dir }}/{{ skaffold_bin }}"
+  register: installed
+  failed_when: "installed.rc not in [0, 2]"
+
+- name: Download Skaffold
+  ansible.builtin.get_url:
+    url: "https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64"
+    validate_certs: false
+    dest: "{{ downloads_dir}}/{{ skaffold_bin}}"
+  when: installed.stdout == ""
+
+- name: Install Skaffold
+  become: yes
+  ansible.builtin.command: sudo install "{{ downloads_dir}}/{{ skaffold_bin}}" "{{ install_dir }}"
+  when: installed.stdout == ""

@@ -1,0 +1,24 @@
+---
+# task to install kubectl
+- name: Check kubectl install
+  ansible.builtin.command: "ls {{ install_dir }}/kubectl"
+  register: installed
+  failed_when: "installed.rc not in [0,2]"
+
+- name: Get stable kubectl version
+  ansible.builtin.uri:
+    url: "https://cdn.dl.k8s.io/release/stable.txt"
+    return_content: true
+  register: kubectl_stable
+  when: installed.stdout == ""
+
+- name: Download kubectl binary
+  ansible.builtin.get_url:
+    url: "https://dl.k8s.io/release/{{ kubectl_stable[\"content\"] }}/bin/linux/amd64/kubectl"
+    dest: "{{ downloads_dir }}/{{ kubectl_bin }}"
+  when: installed.stdout == ""
+
+- name: Install kubectl binary
+  ansible.builtin.command:
+    cmd: sudo install -o root -g root -m 0755 "{{ downloads_dir }}/kubectl" "{{ install_dir }}/kubectl"
+  when: installed.stdout == ""

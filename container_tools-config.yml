@@ -1,0 +1,10 @@
+---
+- name: Install container tools
+  hosts: localhost
+  gather_facts: yes
+  become: no
+
+  tasks:
+    - name: install container tools
+      import_role:
+        name: container_tools

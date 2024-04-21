@@ -1,2 +1,11 @@
 ---
 # vars file for container_tools
+downloads_dir: "{{ ansible_env.HOME }}/Downloads"
+install_dir: "/usr/local/bin"
+skaffold_bin: "skaffold"
+kubectl_bin: "kubectl"
+install_packages:
+  - buildah
+  - podman-compose
+  - packer
+  - terraform
