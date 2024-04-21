@@ -6,7 +6,12 @@ A brief description of the role goes here.
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+- Haven't found a clean way to add the hashicorp repo to dnf yet, this must be ran first :
+
+```
+sudo dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
+sudo dnf update
+```
 
 Role Variables
 --------------

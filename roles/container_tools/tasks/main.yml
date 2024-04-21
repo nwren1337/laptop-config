@@ -1,2 +1,15 @@
 ---
 # tasks file for container_tools
+- name: Install packages
+  ansible.builtin.package:
+    name: "{{ install_packages }}"
+    state: present
+  become: yes
+
+- name: Install skaffold
+  import_tasks: skaffold.yml
+
+- name: Install Kubectl
+  import_tasks: kubectl.yml
+
+
