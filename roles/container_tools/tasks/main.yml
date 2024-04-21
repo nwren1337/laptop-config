@@ -1,15 +1,16 @@
 ---
 # tasks file for container_tools
-- name: Install packages
+- name: Ensure DNF packages
   ansible.builtin.package:
     name: "{{ install_packages }}"
     state: present
   become: yes
 
-- name: Install skaffold
+- name: Ensure skaffold
   import_tasks: skaffold.yml
 
-- name: Install Kubectl
+- name: Ensure Kubectl
   import_tasks: kubectl.yml
 
-
+- name: Ensure Minikube
+  import_tasks: minikube.yml

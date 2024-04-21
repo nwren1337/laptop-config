@@ -1,0 +1,17 @@
+---
+# installs minikube
+- name: Check minikube install
+  ansible.builtin.command: "ls {{ install_dir }}/minikube"
+  register: installed
+  failed_when: "installed.rc not in [0,2]"
+
+- name: Download minikube binary
+  ansible.builtin.get_url:
+    url: "https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64"
+    dest: "{{ downloads_dir }}/minikube"
+  when: installed.stdout == ""
+
+- name: Install minikube binary
+  ansible.builtin.command:
+    cmd: sudo install "{{ downloads_dir }}/minikube" "{{ install_dir }}/minikube"
+  when: installed.stdout == ""
