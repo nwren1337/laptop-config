@@ -1,0 +1,4 @@
+---
+# tasks file for lang_tools
+- name: Install Rust
+  import_tasks: rust.yml

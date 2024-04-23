@@ -1,0 +1,10 @@
+---
+- name: Configure programming languages
+  hosts: localhost
+  gather_facts: yes
+  become: no
+
+  tasks:
+    - name: Configure languages
+      import_role:
+        name: lang_tools

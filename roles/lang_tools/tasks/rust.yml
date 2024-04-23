@@ -1,0 +1,11 @@
+---
+# task to install rust with rustup
+
+- name: Ensure rustup
+  ansible.builtin.dnf:
+    name: rustup
+    state: present
+  become: yes
+
+- name: Run rust init
+  ansible.builtin.command: rustup-init -y
