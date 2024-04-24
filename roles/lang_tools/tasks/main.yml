@@ -1,4 +1,10 @@
 ---
 # tasks file for lang_tools
+- name: Install packages
+  ansible.builtin.package:
+    name: "{{ installed_packages }}"
+    state: present
+  become: yes
+
 - name: Install Rust
   import_tasks: rust.yml

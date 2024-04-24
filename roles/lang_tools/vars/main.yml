@@ -1,2 +1,5 @@
 ---
 # vars file for lang_tools
+installed_packages:
+  - nodejs
+  - yarnpkg
